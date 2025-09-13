@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <title>Book Store</title>
   <link rel="stylesheet" href="style.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 
 </head>
 <style>
@@ -380,11 +379,12 @@ header .icons {
 
   
     .banner {
+    
       margin-top:40px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      background: linear-gradient(90deg,#22a7aa,#22a7aa);
+      background-image: url("banner.jpg");
       color:#fff;
       padding:40px 20px;
       border-radius:6px;
@@ -468,6 +468,25 @@ header .icons {
       font-size: 13px;
       color: #555;
     }
+/* ======= Responsive لجميع الأجهزة ======= */
+@media (max-width: 768px) {
+  .hero, .about, .banner { flex-direction: column; text-align: center; }
+  .hero-text, .about-text { max-width: 100%; }
+  .hero-img img, .about-img img, .banner img { width: 100%; height: auto; margin-top: 20px; }
+  .services-section { flex-direction: column; align-items: center; }
+  .service-box { width: 90%; margin-bottom: 20px; }
+  .books-container { flex-direction: column; align-items: center; }
+  .book-card { width: 90%; margin-bottom: 20px; }
+  .book-container { grid-template-columns: 1fr; padding: 0 20px; }
+  .reviews-grid { grid-template-columns: 1fr; padding: 0 20px; }
+  footer { grid-template-columns: 1fr !important; text-align: center; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-text, .about-text { max-width: 60%; }
+  .hero-img img, .about-img img { width: 80%; }
+  .service-box { width: 45%; }
+}
 
 </style>
 <body>
@@ -706,9 +725,6 @@ header .icons {
       <h2>DIGITAL BOOK</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <a href="#" class="btn">Learn More</a>
-    </div>
-    <div>
-      <img src="banner.jpg" alt="digital book" width="150">
     </div>
   </section>
 <section id="blog">
