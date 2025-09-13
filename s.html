@@ -1,0 +1,809 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Book Store</title>
+  <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #fff;
+  color: #333;
+}
+.dark-mode {
+  background-color: #111;
+  color: #eee;
+}
+
+.dark-mode header, 
+.dark-mode .hero, 
+.dark-mode .about, 
+.dark-mode .featured, 
+.dark-mode .book-container, 
+.dark-mode .reviews-grid, 
+.dark-mode .blog-container, 
+.dark-mode footer, 
+.dark-mode .banner {
+  background-color: #222 !important;
+  color: #eee !important;
+}
+
+.dark-mode p, .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4 {
+  color: #eee !important;
+}
+
+.dark-mode .book-card, 
+.dark-mode .book, 
+.dark-mode .review-card, 
+.dark-mode .blog-card {
+  background-color: #333 !important;
+  color: #eee !important;
+}
+
+.dark-mode .book-card del {
+  color: #ccc !important;
+}
+
+.dark-mode .btn, 
+.dark-mode .book-card button, 
+.dark-mode .hero-text button, 
+.dark-mode .about-text button {
+  background-color: #555 !important;
+  color: #fff !important;
+  border-color: #555 !important; }
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: #f8f8f8;
+}
+.logo-img {
+  width: 40px; 
+  height: auto; 
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+header nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+header .icons {
+  font-size: 18px;
+  display: flex;
+  gap: 10px;
+}
+
+
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  background-image: url(bg.png);
+}
+
+
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-text h1 {
+  font-size: 36px;
+}
+
+.hero-text h1 span {
+  color:#22a7aa ;
+}
+
+.hero-text p {
+  margin: 20px 0;
+  line-height: 1.5;
+}
+
+.hero-text button {
+  background:#22a7aa;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.hero-img img {
+ 
+  width: 600px;  
+  height: auto; 
+  transition: transform 0.2s; }
+
+.services-section {
+  display: flex;
+  justify-content: space-around; 
+  flex-wrap: wrap; 
+  gap: 20px;
+  padding: 40px 20px; 
+}
+
+.service-box {
+  background-color: #f9f9f9;
+  border: 1px solid #22a7aa;
+  border-radius: 10px;
+  padding: 25px; 
+  text-align: center;
+  width: 22%; 
+  box-shadow: 0 4px 8pxrgb(34, 167, 170);;
+  transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.service-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgb(34, 167, 170);;
+}
+
+
+.service-box img {
+  width: 50px;
+  margin-bottom: 15px; 
+}
+
+.service-box h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.service-box p {
+  font-size: 0.9rem; 
+  color: #666; 
+}
+
+/* About */
+.about {
+  display: flex;
+  align-items: center;
+  padding: 50px;
+  gap: 30px;
+}
+
+.about-img img {
+  width: 600px;
+}
+
+.about-text {
+  max-width: 50%;
+}
+
+.about-text button {
+  background:#22a7aa ;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* Featured Books */
+.featured {
+  padding: 50px;
+}
+
+.featured h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.books-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scrollbar-width:thin;
+  scrollbar-color: #22a7aa;
+  
+}
+
+.book-card {
+  min-width: 200px;
+  background: #f8f8f8;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.book-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.book-card span {
+  display: block;
+  margin-top: 5px;
+  font-weight: bold;
+  color: #22a7aa;
+}
+
+.book-card del {
+  color: #999;
+  margin-left: 5px;
+}
+
+.book-card button {
+  background: #22a7aa;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+.book-card button:hover {
+  background: #22a7aa;
+}
+ body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f8f8;
+      color: #222;
+    }
+
+
+
+    .review-card {
+      background:#fff;
+      border:2px solid #ccecec;
+      border-radius:6px;
+      padding:20px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.05)
+      transition all 0.3s ease;}
+
+
+    
+
+    h1 {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .book-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px 40px;
+    }
+
+    .book {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .book img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .book:hover {
+      border-color:#22a7aa;
+      background: #eafff1;
+      box-shadow: 0 6px 16px rgb(34, 167, 170);;
+      transform: translateY(-4px);
+    }
+
+    .stars {
+      color: teal;
+      font-size: 18px;
+      margin: 8px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid #22a7aa;
+      color:#22a7aa;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #22a7aa;
+      color: white;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    } 
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;}
+
+   
+   
+    .review-card:hover {
+      border-color:#22a7aa;
+      background: #eafff1;
+      box-shadow: 0 6px 16pxrgb(34, 167, 170);;
+      transform: translateY(-4px);
+    }
+
+    .avatar {
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      overflow:hidden;
+      margin-bottom:10px;
+    }
+
+    .avatar img {width:100%; height:100%; object-fit:cover}
+
+    .name { font-weight:700; font-size:18px; margin:0 0 8px; }
+    .review-text { font-size:14px; margin-bottom:12px; }
+
+  
+    .banner {
+      margin-top:40px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background: linear-gradient(90deg,#22a7aa,#22a7aa);
+      color:#fff;
+      padding:40px 20px;
+      border-radius:6px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .banner h2 {
+      font-size:40px;
+      margin:0 0 10px;
+    }
+
+    .banner p { margin:0 0 20px; }
+
+    .banner .btn {
+      background:#22a7aa;
+      color:#fff;
+      border:none;
+    }
+
+
+  .newsletter button:hover {
+  background: #22a7aa; 
+}
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f8f8;
+      scroll-behavior: smooth; 
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    section {
+      padding: 60px 20px;
+    }
+
+    
+    .blog-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .blog-card {
+      background: #fff;
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .blog-card:hover { transform: translateY(-5px); }
+    .blog-card img { width: 100%; height: 200px; object-fit: cover; }
+    .blog-card .content { padding: 15px; }
+    .blog-card h3 { color: #22a7aa;margin-bottom: 10px; }
+
+    footer {
+      background: #eee;
+      padding: 30px 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    footer h4 { margin-bottom: 10px; }
+    footer ul { list-style: none; padding: 0; }
+    footer li { margin: 5px 0; }
+    footer a { text-decoration: none; color: #22a7aa; }
+
+    .copyright {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #555;
+    }
+
+</style>
+<body>
+  <!-- Header -->
+<header>
+  <img src="logo.png" class="logo-img">
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#featured">Featured</a></li>
+      <li><a href="#arrivals">Arrivals</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#blog">Blog</a></li>
+    </ul>
+  </nav>
+
+  <div class="icons">
+    <button id="search-btn"><i class="fas fa-search"></i></button>
+    <button id="heart-btn"><i class="fas fa-heart"></i></button>
+    <button id="color-btn"><i class="fas fa-palette"></i></button>
+    <button id="darkmode-btn"><i class="fas fa-moon"></i></button>
+  </div>
+</header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>WELCOME TO <span> <br>BOOK STORE </span></h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. Assumenda molestias atque laborum non fugit ex deserunt.
+                     Exercitationem velit ducimus praesentium obcaecati hic voluptate id tenetur fuga illum quidem omnis? Rerum?
+      </p>
+      <button>Learn More</button>
+    </div>
+    <div class="hero-img">
+      <!-- صورة الرف بالكتب -->
+      <img src="table.jpg.png" alt="Books Shelf">
+    </div>
+  </section>
+
+  <section class="services-section">
+  <div class="service-box">
+    <h3>Fast Delivery</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+  </div>
+
+  <div class="service-box">
+    
+    <h3>24 x 7 Services</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+  </div>
+
+  <div class="service-box">
+   
+    <h3>Best Deal</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+  </div>
+
+  <div class="service-box">
+    
+    <h3>Secure Payment</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+  </div>
+</section>
+
+
+  <!-- About -->
+  <section class="about">
+    <div class="about-img">
+      <img src="about.png" alt="Books and Candle">
+    </div>
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p>
+       oluptLorem ipsum dolor sit amet consectetur adipiscing elit. Beatae cumque atque dolor corporis architecto.Vate expedita molestias maxime officia natus consectetur dolor quisquam illo? Quis illum nostrum perspiciatis laboriosam rem perferendis? Lorem ipsum dolor sit amet consectetur adipiscing elit.
+                      Minus ad eius sapien architecto aperiam laboriosam voluptas nobis voluptates 
+                     id amet eos repellat corrupti harum consectetur, dolorum dolore blanditiis quam quo.
+      </p>
+      <button>Learn More</button>
+    </div>
+  </section>
+
+  <!-- Featured Books -->
+  <section class="featured">
+    <h2>Featured Books</h2>
+    <div class="books-container">
+      <!-- 15 كتاب -->
+      <div class="book-card">
+        <img src="book_1.jpg" alt="Book 1">
+        <h3>Book Title 1</h3>
+        <p>Author Name</p>
+        <span>$25.00 <del>$30.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_2.jpg" alt="Book 2">
+        <h3>Book Title 2</h3>
+        <p>Author Name</p>
+        <span>$20.00 <del>$28.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_3.jpg" alt="Book 3">
+        <h3>Book Title 3</h3>
+        <p>Author Name</p>
+        <span>$22.00 <del>$27.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_4.jpg" alt="Book 4">
+        <h3>Book Title 4</h3>
+        <p>Author Name</p>
+        <span>$26.00 <del>$32.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_5.jpg" alt="Book 5">
+        <h3>Book Title 5</h3>
+        <p>Author Name</p>
+        <span>$18.00 <del>$25.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_6.jpg" alt="Book 6">
+        <h3>Book Title 6</h3>
+        <p>Author Name</p>
+        <span>$28.00 <del>$35.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_7.png" alt="Book 7">
+        <h3>Book Title 7</h3>
+        <p>Author Name</p>
+        <span>$30.00 <del>$40.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_8.png" alt="Book 8">
+        <h3>Book Title 8</h3>
+        <p>Author Name</p>
+        <span>$24.00 <del>$30.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_9.jpg" alt="Book 9">
+        <h3>Book Title 9</h3>
+        <p>Author Name</p>
+        <span>$21.00 <del>$29.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_10.png" alt="Book 10">
+        <h3>Book Title 10</h3>
+        <p>Author Name</p>
+        <span>$19.00 <del>$26.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_11.jpg" alt="Book 11">
+        <h3>Book Title 11</h3>
+        <p>Author Name</p>
+        <span>$27.00 <del>$34.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_12.png" alt="Book 12">
+        <h3>Book Title 12</h3>
+        <p>Author Name</p>
+        <span>$23.00 <del>$29.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_13.png" alt="Book 13">
+        <h3>Book Title 13</h3>
+        <p>Author Name</p>
+        <span>$32.00 <del>$38.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_14.png" alt="Book 14">
+        <h3>Book Title 14</h3>
+        <p>Author Name</p>
+        <span>$26.00 <del>$31.00</del></span>
+        <button>Learn More</button>
+      </div>
+      <div class="book-card">
+        <img src="book_15.png" alt="Book 15">
+        <h3>Book Title 15</h3>
+        <p>Author Name</p>
+        <span>$29.00 <del>$36.00</del></span>
+        <button>Learn More</button>
+     
+      </div>
+    </div>
+  </section>
+  
+  <h1>New Arrivals</h1>
+  <div class="book-container">
+    <div class="book"><img src="arrival_1.jpg" alt="Book 1"><p>New Arrivals</p>
+      <div class="stars">★★★★★</div><a href="#" class="btn">Learn More</a></div>
+    <div class="book"><img src="arrival_2.jpg" alt="Book 2"><p>New Arrivals</p>
+      <div class="stars">★★★★☆</div><a href="#" class="btn">Learn More</a></div>
+    <div class="book"><img src="arrival_3.jpg" alt="Book 3"><p>New Arrivals</p>
+      <div class="stars">★★★☆☆</div><a href="#" class="btn">Learn More</a></div>
+    <div class="book"><img src="arrival_4.jpg" alt="Book 4"><p> New Arrivals</p>
+      <div class="stars">★★★★★</div><a href="#" class="btn">Learn More</a></div>
+    <div class="book"><img src="arrival_5.jpg" alt="Book 5"><p>New Arrivals</p>
+      <div class="stars">★★★★☆</div><a href="#" class="btn">Learn More</a></div>
+    <div class="book"><img src="arrival_6.jpg" alt="Book 6"><p>New Arrivals</p>
+      <div class="stars">★★★☆☆</div><a href="#" class="btn">Learn More</a></div>
+    <div class="book"><img src="arrival_7.jpg" alt="Book 7"><p>New Arrivals</p>
+      <div class="stars">★★★★★</div><a href="#" class="btn">Learn More</a></div>
+    <div class="book"><img src="arrival_8.webp" alt="Book 8"><p>New Arrivals</p>
+      <div class="stars">★★★★☆</div><a href="#" class="btn">Learn More</a></div>
+    <div class="book"><img src="arrival_9.jpg" alt="Book 9"><p>New Arrivals</p>
+      <div class="stars">★★★☆☆</div><a href="#" class="btn">Learn More</a></div>
+    <div class="book"><img src="arrival_10.jpg" alt="Book 10"><p>New Arrivals</p>
+      <div class="stars">★★★★★</div><a href="#" class="btn">Learn More</a></div>
+  </div>
+
+
+  <section class="wrap">
+    <h1>Reviews</h1>
+    <div class="reviews-grid">
+      <div class="review-card"><div class="avatar"><img src="review_1.png" alt=""></div><p class="name">John Deo</p><p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><div class="stars">★★★★★</div></div>
+      <div class="review-card"><div class="avatar"><img src="review_2.png" alt=""></div><p class="name">John Deo</p><p class="review-text">Consectetur adipisicing elit, sed do eiusmod tempor.</p><div class="stars">★★★★☆</div></div>
+      <div class="review-card"><div class="avatar"><img src="review_3.png"></div><p class="name">John Deo</p><p class="review-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p><div class="stars">★★★★★</div></div>
+      <div class="review-card"><div class="avatar"><img src="review_4.png" alt=""></div><p class="name">John Deo</p><p class="review-text">Duis aute irure dolor in reprehenderit in voluptate velit esse.</p><div class="stars">★★★★☆</div></div>
+    </div>
+  </section>
+
+  
+  <section class="banner">
+    <div>
+      <h2>DIGITAL BOOK</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <a href="#" class="btn">Learn More</a>
+    </div>
+    <div>
+      <img src="banner.jpg" alt="digital book" width="150">
+    </div>
+  </section>
+<section id="blog">
+    <h1>Our Blog</h1>
+    <div class="blog-container">
+      <div class="blog-card">
+        <img src="blog_1.jpg" alt="Blog1">
+        <div class="content">
+          <h3>Blogger</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <img src="blog_2.jpg" alt="Blog2">
+        <div class="content">
+          <h3>Blogger</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <img src="blog_3.jpg" alt="Blog3">
+        <div class="content">
+          <h3>Blogger</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+     <div class="footer-logo">
+    <img src="logo.png" alt="Logo" class="logo">
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+      Est quaerat ipsa aspernatur ad sequi, dolore eveniet vitae quasi. 
+      Excepturi ipsa odio impedit sequi at hic velit, minus vero sint. Voluptas?
+    </p>
+  </div>>
+      
+  
+    <div>
+      <h4>Quick Link</h4>
+      <ul>
+      <li><a href="#home"> Home</a></li>
+
+        <li><a href="#about">About</a></li>
+        <li><a href="#featured">Featured</a></li>
+        <li><a href="#arrivals">Arrivals</a></li>
+        <li><a href="#blog">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact Info</h4>
+      <p>📞 +94 12 345 6789</p>
+      <p>📞 +94 32 444 699</p>
+      <p>📧 bookstore123@gmail.com</p>
+       
+    </div>
+    <div>
+      <h4>Follow Us</h4>
+      <p>🌐 📘 🐦</p>
+    </div>
+  <div class="newsletter">
+      <h4>Newsletter</h4>
+      <input type="email" placeholder="Your email here">
+      <button>Subscribe</button>
+      
+    </div>
+    
+    <div class="copyright">
+      Design By © WT Master Code
+      <img src="logo.png" alt="Logo" width="60">
+    </div>
+  </footer>
+ <script>
+
+  const colorBtn = document.getElementById('color-btn');
+  colorBtn.addEventListener('click', () => {
+    const colors = ['#22a7aa','#e74c3c','#f1c40f','#8e44ad','#3498db','#1abc9c'];
+    const newColor = colors[Math.floor(Math.random() * colors.length)];
+    document.querySelectorAll('.hero-text span, .book-card span, .book-card button, .btn').forEach(el => {
+      el.style.color = newColor;
+      if(el.tagName === 'BUTTON') el.style.background = newColor;
+      if(el.classList.contains('btn')) el.style.borderColor = newColor;
+    });
+  });
+
+  const darkBtn = document.getElementById('darkmode-btn');
+  darkBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+</script>
+
+</body>
+</html>
